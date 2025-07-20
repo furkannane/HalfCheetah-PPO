@@ -30,3 +30,10 @@ This project is built for clarity, modularity, and fast iteration, making it sui
 - Deterministic action selection during evaluation.
 - Command-line selectable test mode with optional rendering.
 - Summary stats for episode reward and length.
+
+## Demo
+### Untrained Agent
+![PPO Untrained Agent Demo](videos/rl-video-before.gif)
+
+### Trained Agent
+![PPO Trained Agent Demo](videos/rl-video-after-training.gif)
