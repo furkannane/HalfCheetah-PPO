@@ -1,29 +1,32 @@
-# Humanoid PPO
-A lightweight PyBullet + PyTorch implementation of a simplified humanoid sprint environment with smart initialization and a minimalist PPO (Proximal Policy Optimization) agent.
+# 🏃‍♂️ HalfCheetah PPO
 
-This project is designed for rapid prototyping and educational experiments with reinforcement learning (RL) on simulated humanoid locomotion tasks.
+A modern **PyTorch + Gymnasium** implementation of **Proximal Policy Optimization (PPO)** for continuous control in the `HalfCheetah-v4` environment.
+
+This project is built for clarity, modularity, and fast iteration, making it suitable for research, education, and benchmarking experiments.
 
 ## 🚀 Features
-- Simplified Environment:
 
-- PyBullet-based humanoid with reduced joint control complexity.
+### ✅ Robust PPO Core
+- Actor-Critic architecture with a shared MLP torso and separate heads.
+- Orthogonal weight initialization and learnable log standard deviation for action noise.
+- Clipped objective and KL-based early stopping for training stability.
 
-  - Smart reset with phase-dependent initial walking poses for faster convergence.
+### 📦 Smart Buffer & GAE
+- Generalized Advantage Estimation (GAE) for low-bias, low-variance learning.
+- Trajectory segmentation and normalized advantages for improved convergence.
+- Efficient buffer reset and batched mini-updates across multiple PPO epochs.
 
-  - Reward function combines forward velocity, stability, reference pose tracking, and low energy penalties.
+### ⚙️ Efficient Training Pipeline
+- Modular training loop with configurable `buffer_size`, `batch_size`, and `ppo_epochs`.
+- Gradient clipping and entropy regularization for stability.
+- On-policy updates scheduled after each full trajectory batch.
 
-- Efficient PPO Implementation:
+### 💾 Logging & Checkpoints
+- Logs average episode reward, length, and loss metrics.
+- Auto-saves model checkpoints and full config JSON.
+- Optional plotting function for training reward curves.
 
-  - Lightweight Actor-Critic network with shared layers.
-
-  - Conservative exploration (small initial std) to avoid instability.
-
-  - Reduced buffer size and epochs for quick experiments.
-
-- Observation Normalization:
-
-  - Running mean and variance tracker to stabilize learning.
-
-- Logging & Checkpoints:
-
-  - Logs metrics to log.txt and periodically saves models.
+### 🧪 Testing & Evaluation
+- Deterministic action selection during evaluation.
+- Command-line selectable test mode with optional rendering.
+- Summary stats for episode reward and length.
